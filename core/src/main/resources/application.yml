@@ -1,0 +1,18 @@
+server:
+  port: 8081
+  jetty:
+    acceptors: 1
+    selectors: 10
+
+ad:
+  kafkaServer: localhost:9092
+  kafkaTopic: bfrd.logWarpper
+  kafkaSynchronous: true
+  testProperties: inner
+
+logging:
+  level:
+    root: info
+    com:
+      dobest: debug
+

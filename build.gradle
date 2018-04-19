@@ -1,0 +1,56 @@
+buildscript {
+    ext {
+        springBootVersion = '1.5.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id 'application'
+    id 'org.sonarqube' version '2.6.2'
+}
+
+
+allprojects {
+    apply plugin: 'java'
+    apply plugin: 'idea'
+    apply plugin: 'spring-boot'
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+
+    tasks.withType(JavaCompile) {
+        options.incremental = true
+        options.compilerArgs << '-parameters'
+        options.encoding = "UTF-8"
+    }
+}
+
+
+group = 'com.dobest.avengers'
+version = '0.1'
+
+repositories {
+    maven{ url 'http://10.191.80.131:8081/artifactory/gradle-dev/'}
+}
+
+dependencies {
+
+}
+
+sonarqube {
+    properties {  
+        property "sonar.host.url", "http://10.191.80.131:9000"  
+        property "sonar.scm.provider", "git"  
+    }
+}

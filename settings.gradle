@@ -1,0 +1,6 @@
+//数据集成(蜘蛛侠) -- 提供移动、Web、关系型数据库等App的数据获取
+rootProject.name = "spider"
+
+include 'core'
+include 'universal'
+include 'advertising'
